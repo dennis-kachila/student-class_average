@@ -1,3 +1,4 @@
+"""CHECKLIST"""
 # Program to calculate the average of a set of grades
 # input student name and grade
 # input the grades scored in a grade list
@@ -21,12 +22,14 @@ def average(grades):
 def letter_grade(average):
     if average >= 90:
         return 'A', 'Passed'
-    elif average >= 80:
+    elif average >= 80 and average < 90:
+        return 'B+', 'Passed'
+    elif average >= 70 and average < 80:
         return 'B', 'Passed'
-    elif average >= 70:
+    elif average >= 60 and average < 70:
+        return 'C+', 'Passed'
+    elif average >= 50 and average < 60:
         return 'C', 'Passed'
-    elif average >= 60:
-        return 'D', 'Passed'
     else:
         return 'F', 'Failed'
     
@@ -34,26 +37,30 @@ def letter_grade(average):
 def main():
     # input student name and grade
     name = input('Enter the student\'s name: ')
+      
+# new line
+    print()
     
-    # input the grades scored in a grade list
+# five subjects are entered
     grades = []
-    while grade != '':
-        grades.append(int(grade))
-        grade = input('Enter the student\'s grade: ')
-        
-    # find the average of the grades
-    average = average(grades)
+    for i in range(4):
+        grade = int(input('Enter the grade: '))
+        grades.append(grade)
+
+    # calculate the average of the grades
+    average_grade = average(grades)
     
+    print()    
     # print the student's name 
-    print('The student\'s name is', name)
-    
-    
+    print('The student\'s name is: ', name.upper())
     # output the average of the grades
-    print('The average of the grades is: ', average)
+    print('The average of the grades is: ', average_grade)
+    # output the letter grade and indicate if the student passed or failed
+    alphabet_grade, pass_fail = letter_grade(average_grade)
+    print('The letter grade is: ', alphabet_grade)
+    print(pass_fail.upper())
     
-    # find the appropriate letter grade
-    # output the letter grade
-    # indicate if the student passed or failed
-    letter_grade, pass_fail = letter_grade(average)
-    print('The letter grade is: ', letter_grade)
-    print('The student', pass_fail)
+    
+# call the main function
+if __name__ == '__main__':
+    main()
